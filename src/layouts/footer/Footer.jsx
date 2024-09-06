@@ -154,7 +154,7 @@ const Footer = ({
               </div>
             </div>
           </div>
-          {/* <div
+          <div
             className={`${
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
             }`}
@@ -164,7 +164,7 @@ const Footer = ({
               spaceLeftClass="ml-70"
               sideMenu={sideMenu}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </footer>

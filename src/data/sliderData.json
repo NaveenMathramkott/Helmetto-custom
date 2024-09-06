@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Enjoy This Offer Today",
+    "subtitle": "New Collection <br /> Sale 40%",
+    "image": "https://res.cloudinary.com/dqibvgjoz/image/upload/v1724910111/banner01_qaslwt.jpg",
+    "url": "/product"
+  },
+  {
+    "id": 2,
+    "title": "Enjoy This Offer Today",
+    "subtitle": "New Collection <br /> Sale 20%",
+    "image": "https://res.cloudinary.com/dqibvgjoz/image/upload/v1724909176/banner04_yxvpmi.png",
+    "url": "/product"
+  }
+]

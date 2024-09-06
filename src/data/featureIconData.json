@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "titleImage": "../assets/images/boxes.png",
+    "title": "Free shipping on all order",
+    "iconImage": "../assets/images/boxes.png",
+    "backgroundColor": "#ccfbe9"
+  },
+  {
+    "id": 2,
+    "titleImage": "../assets/images/boxes.png",
+    "title": "Back guarantee under 5 days",
+    "iconImage": "../assets/images/boxes.png",
+    "backgroundColor": "#f2fbcc"
+  },
+  {
+    "id": 3,
+    "titleImage": "../assets/images/loading.png",
+    "title": "On every order over $150",
+    "iconImage": "../assets/images/boxes.png",
+    "backgroundColor": "#ddfbcc"
+  }
+]
