@@ -7,7 +7,7 @@ const HomePage = () => {
       headerPaddingClass="header-padding-2"
       headerTop="visible"
     >
-      HomePage
+      <div>HomePage</div>
     </Layout>
   );
 };
