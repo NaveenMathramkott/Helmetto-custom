@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dqibvgjoz/image/upload/v1724909176/banner04_yxvpmi.png",
+    "title": "New Arrivals",
+    "subtitle": "Choose your products here",
+    "link": "/shop-grid-standard"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/dqibvgjoz/image/upload/v1724909176/banner04_yxvpmi.png",
+    "title": "Featured Products",
+    "subtitle": "Choose your products here",
+    "link": "/shop-grid-standard"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/dqibvgjoz/image/upload/v1724909176/banner04_yxvpmi.png",
+    "title": "Best Seller",
+    "subtitle": "Choose your products here",
+    "link": "/shop-grid-standard"
+  }
+]
