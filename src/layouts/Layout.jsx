@@ -2,6 +2,7 @@ import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import { Toaster } from "react-hot-toast";
 import PropTypes from "prop-types";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Layout = ({
   children,
@@ -20,7 +21,12 @@ const Layout = ({
       />
       {children}
       <Toaster />
-      <Footer />
+      <ScrollToTop />
+      <Footer
+        backgroundColorClass="bg-gray"
+        spaceTopClass="pt-100"
+        spaceBottomClass="pb-70"
+      />
     </>
   );
 };
