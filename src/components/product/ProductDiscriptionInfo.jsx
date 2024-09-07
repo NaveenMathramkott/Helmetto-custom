@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
 import ProductRating from "./ProductRating";
@@ -13,6 +13,7 @@ const ProductDescriptionInfo = ({
   finalProductPrice,
   cartItems,
 }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -198,6 +199,12 @@ const ProductDescriptionInfo = ({
             ) : (
               <button disabled>Out of Stock</button>
             )}
+            <button
+              onClick={() => navigate("/configurator")}
+              style={{ marginLeft: "10px" }}
+            >
+              Customize
+            </button>
           </div>
         </div>
       )}
