@@ -47,9 +47,7 @@ const IconGroup = ({ iconWhiteClass }) => {
           <div className="account-dropdown">
             <ul>
               <li>
-                <Link to={import.meta.env.VITE_PUBLIC_KEY + "/profile"}>
-                  My account
-                </Link>
+                <Link to={"/profile"}>My account</Link>
               </li>
               <li>
                 <Link to={"/"} onClick={() => dispatch(logout())}>
@@ -63,7 +61,7 @@ const IconGroup = ({ iconWhiteClass }) => {
         <div className="same-style account-setting d-none d-lg-block">
           <ul>
             <li>
-              <Link to={import.meta.env.VITE_PUBLIC_KEY + "/auth"}>Login</Link>
+              <Link to={"/auth"}>Login</Link>
             </li>
           </ul>
         </div>
