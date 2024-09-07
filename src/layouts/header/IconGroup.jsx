@@ -78,10 +78,7 @@ const IconGroup = ({ iconWhiteClass }) => {
         <MenuCart />
       </div>
       <div className="same-style cart-wrap d-block d-lg-none">
-        <Link
-          className="icon-cart"
-          to={import.meta.env.VITE_PUBLIC_KEY + "/cart"}
-        >
+        <Link className="icon-cart" to={"/cart"}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
             {cartItems && cartItems.length ? cartItems.length : 0}

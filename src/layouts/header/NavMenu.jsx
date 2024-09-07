@@ -13,8 +13,8 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
     >
       <nav>
         <ul>
-          <li>
-            <Link to={import.meta.env.VITE_PUBLIC_KEY + "/"}>
+          {/* <li>
+            <Link to={"/"}>
               {"home"}
               {sidebarMenu ? (
                 <span>
@@ -24,17 +24,18 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
                 <i className="fa fa-angle-down" />
               )}
             </Link>
-          </li>
+          </li> */}
           {/* collection section ----------------- */}
           <li>
-            <Link to={import.meta.env.VITE_PUBLIC_KEY + "/collection"}>
-              {"collection"}
-            </Link>
+            <Link to={"/configurator"}>{"Customize"}</Link>
+          </li>
+          <li>
+            <Link to={"/collection"}>{"collection"}</Link>
           </li>
           {/* collection section ----------------- */}
 
-          <li>
-            <Link to={import.meta.env.VITE_PUBLIC_KEY + "/"}>
+          {/* <li>
+            <Link to={"/"}>
               {"pages"}
               {sidebarMenu ? (
                 <span>
@@ -46,27 +47,19 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={import.meta.env.VITE_PUBLIC_KEY + "/cart"}>
-                  {"cart"}
-                </Link>
+                <Link to={"/cart"}>{"cart"}</Link>
               </li>
               <li>
-                <Link to={import.meta.env.VITE_PUBLIC_KEY + "/checkout"}>
-                  {"checkout"}
-                </Link>
+                <Link to={"/checkout"}>{"checkout"}</Link>
               </li>
               <li>
-                <Link to={import.meta.env.VITE_PUBLIC_KEY + "/wishlist"}>
-                  {"wishlist"}
-                </Link>
+                <Link to={"/wishlist"}>{"wishlist"}</Link>
               </li>
             </ul>
-          </li>
+          </li> */}
 
           <li>
-            <Link to={import.meta.env.VITE_PUBLIC_KEY + "/contact"}>
-              {"contact_us"}
-            </Link>
+            <Link to={"/contact"}>{"contact"}</Link>
           </li>
         </ul>
       </nav>
