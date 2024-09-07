@@ -91,14 +91,14 @@ const cartSlice = createSlice({
         state.cartItems = state.cartItems.filter(
           (item) => item.cartItemId !== product.cartItemId
         );
-        toast.error("Removed From Cart", { position: "bottom-left" });
+        toast.success("Removed From Cart", { position: "bottom-left" });
       } else {
         state.cartItems = state.cartItems.map((item) =>
           item.cartItemId === product.cartItemId
             ? { ...item, quantity: item.quantity - 1 }
             : item
         );
-        toast.warn("Item Decremented From Cart", {
+        toast.success("Item Decremented From Cart", {
           position: "bottom-left",
         });
       }

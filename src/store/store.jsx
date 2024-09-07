@@ -15,7 +15,7 @@ import cartReducer from "./slices/cart-slice";
 import authReducer from "./slices/auth-slice";
 
 const persistConfig = {
-  key: "flone",
+  key: "helmetto",
   version: 1.1,
   storage,
   blacklist: ["product"],

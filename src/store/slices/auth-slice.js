@@ -23,7 +23,6 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.error = null;
-      localStorage.removeItem("user");
       toast.success("Logged out", { position: "bottom-left" });
     },
   },

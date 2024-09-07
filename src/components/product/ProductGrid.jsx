@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getProducts } from "../helpers/product";
-import ProductGridSingleView from "../viewes/ProductGridSingleView";
+import { getProducts } from "../../helpers/product";
+import ProductGridSingleView from "../../viewes/ProductGridSingleView";
 
 // Import Swiper styles
 import "swiper/css";
