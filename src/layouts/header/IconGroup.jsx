@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import MenuCart from "./MenuCart";
+import { logout } from "../../store/slices/auth-slice";
 
 const IconGroup = ({ iconWhiteClass }) => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
+
   const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
@@ -15,7 +20,6 @@ const IconGroup = ({ iconWhiteClass }) => {
     );
     offcanvasMobileMenu.classList.add("active");
   };
-  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <div className={clsx("header-right-wrap", iconWhiteClass)}>
@@ -32,33 +36,38 @@ const IconGroup = ({ iconWhiteClass }) => {
           </form>
         </div>
       </div>
-      <div className="same-style account-setting d-none d-lg-block">
-        <button
-          className="account-setting-active"
-          onClick={(e) => handleClick(e)}
-        >
-          <i className="pe-7s-user-female" />
-        </button>
-        <div className="account-dropdown">
+      {token ? (
+        <div className="same-style account-setting d-none d-lg-block">
+          <button
+            className="account-setting-active"
+            onClick={(e) => handleClick(e)}
+          >
+            <i className="pe-7s-user-female" />
+          </button>
+          <div className="account-dropdown">
+            <ul>
+              <li>
+                <Link to={import.meta.env.VITE_PUBLIC_KEY + "/profile"}>
+                  My account
+                </Link>
+              </li>
+              <li>
+                <Link to={"/"} onClick={() => dispatch(logout())}>
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div className="same-style account-setting d-none d-lg-block">
           <ul>
             <li>
-              <Link to={import.meta.env.VITE_PUBLIC_KEY + "/login-register"}>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to={import.meta.env.VITE_PUBLIC_KEY + "/login-register"}>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to={import.meta.env.VITE_PUBLIC_KEY + "/my-account"}>
-                my account
-              </Link>
+              <Link to={import.meta.env.VITE_PUBLIC_KEY + "/auth"}>Login</Link>
             </li>
           </ul>
         </div>
-      </div>
+      )}
 
       <div className="same-style cart-wrap d-none d-lg-block">
         <button className="icon-cart" onClick={(e) => handleClick(e)}>

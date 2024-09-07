@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getProductCartQuantity } from "../helpers/product";
-import { addToCart } from "../store/slices/cart-slice";
-import ProductRating from "../components/ProductRating";
+import { getProductCartQuantity } from "../../helpers/product";
+import { addToCart } from "../../store/slices/cart-slice";
+import ProductRating from "./ProductRating";
 
 // Import Swiper styles
 import "swiper/css";

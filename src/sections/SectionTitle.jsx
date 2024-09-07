@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const SectionTitleFive = ({ titleText }) => {
+const SectionTitle = ({ titleText }) => {
   return (
     <div className="section-title-4">
       <h3 className="bg-gray-5">{titleText}</h3>
@@ -8,8 +8,8 @@ const SectionTitleFive = ({ titleText }) => {
   );
 };
 
-SectionTitleFive.propTypes = {
+SectionTitle.propTypes = {
   sectionTitle: PropTypes.string,
 };
 
-export default SectionTitleFive;
+export default SectionTitle;

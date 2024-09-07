@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getDiscountPrice } from "../helpers/product";
 import { addToCart } from "../store/slices/cart-slice";
-import ProductModal from "../components/ProductModal";
+import ProductModal from "../components/product/ProductModal";
 
 const ProductGridSingleView = ({
   product,
