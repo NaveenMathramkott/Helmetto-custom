@@ -144,15 +144,17 @@ const Checkout = () => {
                                 cartItem.discount
                               );
                               const finalProductPrice =
-                                cartItem.price.toFixed(2);
+                                cartItem?.price.toFixed(2);
                               const finalDiscountedPrice =
-                                discountedPrice.toFixed(2);
+                                discountedPrice?.toFixed(2);
 
                               discountedPrice != null
                                 ? (cartTotalPrice +=
-                                    finalDiscountedPrice * cartItem.quantity)
+                                    finalDiscountedPrice * cartItem.quantity +
+                                    (cartItem?.custom ? cartItem?.custom : 0))
                                 : (cartTotalPrice +=
-                                    finalProductPrice * cartItem.quantity);
+                                    finalProductPrice * cartItem.quantity +
+                                    (cartItem?.custom ? cartItem?.custom : 0));
                               return (
                                 <li key={key}>
                                   <span className="order-middle-left">
@@ -161,13 +163,20 @@ const Checkout = () => {
                                   <span className="order-price">
                                     {discountedPrice !== null
                                       ? "₹" +
-                                        (
-                                          finalDiscountedPrice *
-                                          cartItem.quantity
+                                        (cartItem.custom
+                                          ? finalDiscountedPrice *
+                                              cartItem.quantity +
+                                            cartItem.custom
+                                          : finalDiscountedPrice *
+                                            cartItem.quantity
                                         ).toFixed(2)
                                       : "₹" +
-                                        (
-                                          finalProductPrice * cartItem.quantity
+                                        (cartItem.custom
+                                          ? finalProductPrice *
+                                              cartItem.quantity +
+                                            cartItem.custom
+                                          : finalProductPrice *
+                                            cartItem.quantity
                                         ).toFixed(2)}
                                   </span>
                                 </li>

@@ -197,8 +197,8 @@
   {
     "id": "4",
     "sku": "asdf126",
-    "name": "Lorem ipsum fashion coat",
-    "price": 15.5,
+    "name": "Helmets Aria",
+    "price": 15000,
     "discount": 0,
     "new": true,
     "rating": 4,
@@ -208,6 +208,7 @@
     "variation": [
       {
         "color": "blue",
+        "colorCode": "#0000FF",
         "image": "https://i.pinimg.com/236x/0b/b7/ce/0bb7ce79554220df61d7fde75c8ca0ec.jpg",
         "size": [
           {
@@ -226,6 +227,7 @@
       },
       {
         "color": "brown",
+        "colorCode": "#683434",
         "image": "https://i.pinimg.com/236x/0b/b7/ce/0bb7ce79554220df61d7fde75c8ca0ec.jpg",
         "size": [
           {
@@ -248,6 +250,7 @@
       },
       {
         "color": "black",
+        "colorCode": "#222222",
         "image": "https://i.pinimg.com/236x/0b/b7/ce/0bb7ce79554220df61d7fde75c8ca0ec.jpg",
         "size": [
           {

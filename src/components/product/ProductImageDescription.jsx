@@ -6,6 +6,8 @@ import ProductImageGallerySideThumb from "./ProductImageGallerySideThumb";
 import ProductImageFixed from "./ProductImageFixed";
 import ProductImageGallery from "./ProductImageGallery";
 import ProductDescriptionInfo from "./ProductDiscriptionInfo";
+import { useState } from "react";
+import HelmetCustomization from "../configurator/HelmetCustomization";
 
 const ProductImageDescription = ({
   spaceTopClass,
@@ -13,6 +15,7 @@ const ProductImageDescription = ({
   galleryType,
   product,
 }) => {
+  const [showConfigurator, setShowConfigurator] = useState(false);
   const { cartItems } = useSelector((state) => state.cart);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
   const finalProductPrice = +product?.price.toFixed(2);
@@ -21,23 +24,30 @@ const ProductImageDescription = ({
     <div className={clsx("shop-area", spaceTopClass, spaceBottomClass)}>
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-6">
-            {galleryType === "leftThumb" ? (
-              <ProductImageGallerySideThumb
-                product={product}
-                thumbPosition="left"
-              />
-            ) : galleryType === "rightThumb" ? (
-              <ProductImageGallerySideThumb product={product} />
-            ) : galleryType === "fixedImage" ? (
-              <ProductImageFixed product={product} />
-            ) : (
-              <ProductImageGallery product={product} />
-            )}
-          </div>
-          <div className="col-lg-6 col-md-6">
-            {/* product description info */}
+          {showConfigurator ? (
+            <div className="col-lg-5 col-md-5">
+              <HelmetCustomization />
+            </div>
+          ) : (
+            <div className="col-lg-5 col-md-5">
+              {galleryType === "leftThumb" ? (
+                <ProductImageGallerySideThumb
+                  product={product}
+                  thumbPosition="left"
+                />
+              ) : galleryType === "rightThumb" ? (
+                <ProductImageGallerySideThumb product={product} />
+              ) : galleryType === "fixedImage" ? (
+                <ProductImageFixed product={product} />
+              ) : (
+                <ProductImageGallery product={product} />
+              )}
+            </div>
+          )}
+          <div className="col-lg-7 col-md-7">
             <ProductDescriptionInfo
+              setShowCustomizer={(data) => setShowConfigurator(data)}
+              showCustomizer={showConfigurator}
               product={product}
               discountedPrice={discountedPrice}
               finalDiscountedPrice={finalDiscountedPrice}

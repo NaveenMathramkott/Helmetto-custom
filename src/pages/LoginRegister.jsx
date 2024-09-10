@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import BreadcrumbWrap from "../components/BreadcrumbWrap";
@@ -10,6 +10,7 @@ import SeoHelmet from "../components/SeoHelmet";
 import Layout from "../layouts/Layout";
 
 const LoginRegister = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let { pathname } = useLocation();
   const [userName, setUserName] = useState("");
@@ -27,9 +28,8 @@ const LoginRegister = () => {
 
       if (res && res.data.success) {
         const { user, token } = res.data;
-        // const authData = { user, token };
-        // localStorage.setItem("user", JSON.stringify(authData));
         dispatch(authSuccess({ user, token }));
+        navigate("/collection");
       } else {
         console.log(`Login `, res);
       }
@@ -51,9 +51,8 @@ const LoginRegister = () => {
       });
       if (res && res.data.success) {
         const { user, token } = res.data;
-        // const authData = { user, token };
-        // localStorage.setItem("user", JSON.stringify(authData));
         dispatch(authSuccess({ user, token }));
+        navigate("/collection");
       } else {
         console.log(`Login `, res);
       }

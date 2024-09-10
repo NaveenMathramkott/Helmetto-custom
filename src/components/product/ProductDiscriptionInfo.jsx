@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
 import ProductRating from "./ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
+import { useCustomization } from "../../store/provider/Customization";
 
 const ProductDescriptionInfo = ({
   product,
@@ -12,9 +13,13 @@ const ProductDescriptionInfo = ({
   finalDiscountedPrice,
   finalProductPrice,
   cartItems,
+  setShowCustomizer,
+  showCustomizer,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { setCoverColor, customParts } = useCustomization();
+
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
@@ -78,6 +83,8 @@ const ProductDescriptionInfo = ({
                         single.color === selectedProductColor ? "checked" : ""
                       }
                       onChange={() => {
+                        console.log("color", single.color);
+                        setCoverColor(single?.colorCode);
                         setSelectedProductColor(single.color);
                         setSelectedProductSize(single.size[0].name);
                         setProductStock(single.size[0].stock);
@@ -171,9 +178,12 @@ const ProductDescriptionInfo = ({
             </button>
           </div>
           <div className="pro-details-cart btn-hover">
-            {productStock && productStock > 0 ? (
+            {showCustomizer ? (
               <button
-                onClick={() =>
+                onClick={() => {
+                  const customTotal = customParts
+                    .map((item) => item.price)
+                    .reduce((acc, init) => acc + init, 0);
                   dispatch(
                     addToCart({
                       ...product,
@@ -188,23 +198,60 @@ const ProductDescriptionInfo = ({
                         : product.selectedProductSize
                         ? product.selectedProductSize
                         : null,
+                      custom: customTotal,
                     })
-                  )
-                }
+                  );
+                }}
                 disabled={productCartQty >= productStock}
               >
                 {" "}
                 Add To Cart{" "}
               </button>
             ) : (
-              <button disabled>Out of Stock</button>
+              <>
+                {productStock && productStock > 0 ? (
+                  <button
+                    onClick={() =>
+                      dispatch(
+                        addToCart({
+                          ...product,
+                          quantity: quantityCount,
+                          selectedProductColor: selectedProductColor
+                            ? selectedProductColor
+                            : product.selectedProductColor
+                            ? product.selectedProductColor
+                            : null,
+                          selectedProductSize: selectedProductSize
+                            ? selectedProductSize
+                            : product.selectedProductSize
+                            ? product.selectedProductSize
+                            : null,
+                        })
+                      )
+                    }
+                    disabled={productCartQty >= productStock}
+                  >
+                    {" "}
+                    Add To Cart{" "}
+                  </button>
+                ) : (
+                  <button disabled>Out of Stock</button>
+                )}
+              </>
             )}
-            <button
-              onClick={() => navigate("/configurator")}
-              style={{ marginLeft: "10px" }}
-            >
-              Customize
-            </button>
+
+            {!showCustomizer ? (
+              <button onClick={() => setShowCustomizer(true)} className="mx-2 ">
+                Customize
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowCustomizer(false)}
+                className="mx-2 "
+              >
+                X
+              </button>
+            )}
           </div>
         </div>
       )}
