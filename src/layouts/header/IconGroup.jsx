@@ -47,7 +47,7 @@ const IconGroup = ({ iconWhiteClass }) => {
           <div className="account-dropdown">
             <ul>
               <li>
-                <Link to={"/profile"}>My account</Link>
+                <Link to={"/dashboard/profile"}>My account</Link>
               </li>
               <li>
                 <Link to={"/"} onClick={() => dispatch(logout())}>

@@ -15,9 +15,9 @@ export const postData = async (url, payload) => {
 };
 
 // Read
-export const getData = async (url) => {
+export const getData = async (url, payload) => {
   try {
-    const response = await axiosInstance.get(url);
+    const response = await axiosInstance.get(url, payload);
     return { data: response.data, error: null };
   } catch (err) {
     return { data: null, error: err.response?.data || err.message };

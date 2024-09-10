@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store.jsx";
 import products from "./data/products.json";
 import { setProducts } from "./store/slices/product-slice.js";
+import { CustomizationProvider } from "./store/provider/Customization.jsx";
 
 store.dispatch(setProducts(products));
 
@@ -14,7 +15,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <ReduxProvider>
-        <App />
+        <CustomizationProvider>
+          <App />
+        </CustomizationProvider>
       </ReduxProvider>
     </Provider>
   </StrictMode>

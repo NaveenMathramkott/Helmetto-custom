@@ -59,12 +59,16 @@ const PaymentPage = () => {
         cartItem.price,
         cartItem.discount
       );
-      const finalProductPrice = cartItem.price.toFixed(2);
-      const finalDiscountedPrice = discountedPrice.toFixed(2);
+      const finalProductPrice = cartItem?.price.toFixed(2);
+      const finalDiscountedPrice = discountedPrice?.toFixed(2);
 
       discountedPrice != null
-        ? (cartTotalPrice += finalDiscountedPrice * cartItem.quantity)
-        : (cartTotalPrice += finalProductPrice * cartItem.quantity);
+        ? (cartTotalPrice +=
+            finalDiscountedPrice * cartItem.quantity +
+            (cartItem?.custom ? cartItem?.custom : 0))
+        : (cartTotalPrice +=
+            finalProductPrice * cartItem.quantity +
+            (cartItem?.custom ? cartItem?.custom : 0));
     });
   };
   getTotal();

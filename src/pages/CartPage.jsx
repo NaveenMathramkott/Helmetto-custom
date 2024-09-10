@@ -11,6 +11,7 @@ import {
   deleteAllFromCart,
 } from "../store/slices/cart-slice";
 import BreadcrumbWrap from "../components/BreadcrumbWrap";
+import { Badge } from "react-bootstrap";
 
 const CartPage = () => {
   let cartTotalPrice = 0;
@@ -20,6 +21,7 @@ const CartPage = () => {
   let { pathname } = useLocation();
 
   const { cartItems } = useSelector((state) => state.cart);
+  console.log("cartItem", cartItems);
 
   return (
     <>
@@ -58,19 +60,25 @@ const CartPage = () => {
                               cartItem.price,
                               cartItem.discount
                             );
-                            const finalProductPrice = cartItem.price.toFixed(2);
+                            const finalProductPrice =
+                              cartItem?.price.toFixed(2);
                             const finalDiscountedPrice =
-                              discountedPrice.toFixed(2);
+                              discountedPrice?.toFixed(2);
 
                             discountedPrice != null
                               ? (cartTotalPrice +=
-                                  finalDiscountedPrice * cartItem.quantity)
+                                  finalDiscountedPrice * cartItem.quantity +
+                                  (cartItem?.custom ? cartItem?.custom : 0))
                               : (cartTotalPrice +=
-                                  finalProductPrice * cartItem.quantity);
+                                  finalProductPrice * cartItem.quantity +
+                                  (cartItem?.custom ? cartItem?.custom : 0));
                             return (
                               <tr key={key}>
                                 <td className="product-thumbnail">
                                   <Link to={"/product/" + cartItem.id}>
+                                    {cartItem.custom && (
+                                      <Badge bg="danger">Custom</Badge>
+                                    )}
                                     <img
                                       className="img-fluid"
                                       src={cartItem.image[0]}
@@ -107,10 +115,26 @@ const CartPage = () => {
                                       <span className="amount">
                                         {"₹" + finalDiscountedPrice}
                                       </span>
+                                      {cartItem.custom && (
+                                        <Badge
+                                          bg="danger"
+                                          style={{ color: "white" }}
+                                        >
+                                          {"₹" + cartItem.custom}
+                                        </Badge>
+                                      )}
                                     </>
                                   ) : (
                                     <span className="amount">
                                       {"₹" + finalProductPrice}
+                                      {cartItem.custom && (
+                                        <Badge
+                                          bg="danger"
+                                          style={{ color: "white" }}
+                                        >
+                                          {"₹" + cartItem.custom}
+                                        </Badge>
+                                      )}
                                     </span>
                                   )}
                                 </td>
@@ -159,12 +183,19 @@ const CartPage = () => {
                                 <td className="product-subtotal">
                                   {discountedPrice !== null
                                     ? "₹" +
-                                      (
-                                        finalDiscountedPrice * cartItem.quantity
+                                      (cartItem.custom
+                                        ? finalDiscountedPrice *
+                                            cartItem.quantity +
+                                          cartItem.custom
+                                        : finalDiscountedPrice *
+                                          cartItem.quantity
                                       ).toFixed(2)
                                     : "₹" +
-                                      (
-                                        finalProductPrice * cartItem.quantity
+                                      (cartItem.custom
+                                        ? finalProductPrice *
+                                            cartItem.quantity +
+                                          cartItem.custom
+                                        : finalProductPrice * cartItem.quantity
                                       ).toFixed(2)}
                                 </td>
 
@@ -273,12 +304,12 @@ const CartPage = () => {
                       </div>
                       <h5>
                         Total products{" "}
-                        <span>{"₹" + cartTotalPrice.toFixed(2)}</span>
+                        <span>{"₹" + cartTotalPrice?.toFixed(2)}</span>
                       </h5>
 
                       <h4 className="grand-totall-title">
                         Grand Total{" "}
-                        <span>{"₹" + cartTotalPrice.toFixed(2)}</span>
+                        <span>{"₹" + cartTotalPrice?.toFixed(2)}</span>
                       </h4>
                       <Link to={"/checkout"}>Proceed to Checkout</Link>
                     </div>
